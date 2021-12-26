@@ -1,0 +1,173 @@
+serviceMonitor:
+  enabled: true
+  namespace: platform
+  labels:
+    release: prometheus
+  interval: 240s
+  telemetryPath: /metrics
+
+config: |-
+  # This is the default configuration for prometheus-cloudwatch-exporter
+  region: us-east-1
+  period_seconds: 240
+  metrics:
+  - aws_namespace: AWS/ELB
+    aws_metric_name: HealthyHostCount
+    aws_dimensions: [AvailabilityZone, LoadBalancerName]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ELB
+    aws_metric_name: UnHealthyHostCount
+    aws_dimensions: [AvailabilityZone, LoadBalancerName]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ELB
+    aws_metric_name: RequestCount
+    aws_dimensions: [AvailabilityZone, LoadBalancerName]
+    aws_statistics: [Sum]
+
+  - aws_namespace: AWS/ELB
+    aws_metric_name: Latency
+    aws_dimensions: [AvailabilityZone, LoadBalancerName]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ELB
+    aws_metric_name: SurgeQueueLength
+    aws_dimensions: [AvailabilityZone, LoadBalancerName]
+    aws_statistics: [Maximum, Sum]
+    
+  - aws_namespace: AWS/ES
+    aws_metric_name: FreeStorageSpace
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: 4xx
+    aws_dimensions: [DomainName]
+    aws_statistics: [SampleCount]
+  
+  - aws_namespace: AWS/ES
+    aws_metric_name: 5xx
+    aws_dimensions: [DomainName]
+    aws_statistics: [SampleCount]
+  
+  - aws_namespace: AWS/ES
+    aws_metric_name: ClusterStatus.red
+    aws_dimensions: [DomainName]
+    aws_statistics: [SampleCount]
+  
+  - aws_namespace: AWS/ES
+    aws_metric_name: ClusterStatus.yellow
+    aws_dimensions: [DomainName]
+    aws_statistics: [SampleCount]
+  
+  - aws_namespace: AWS/ApiGateway
+    aws_metric_name: 4XXError
+    aws_dimensions: [ApiName, Method, Resource, Stage]
+    aws_statistics: [Sum]
+  
+  - aws_namespace: AWS/ApiGateway
+    aws_metric_name: 5XXError
+    aws_dimensions: [ApiName, Method, Resource, Stage]
+    aws_statistics: [Sum]
+  
+  - aws_namespace: AWS/ApiGateway
+    aws_metric_name: Latency
+    aws_dimensions: [ApiName, Method, Resource, Stage]
+    aws_statistics: [Sum]
+    aws_extended_statistics: [p95]
+  
+  - aws_namespace: AWS/ApiGateway
+    aws_metric_name: IntegrationLatency
+    aws_dimensions: [ApiName, Method, Resource, Stage]
+    aws_statistics: [Sum]
+    aws_extended_statistics: [p95]
+    
+  - aws_namespace: AWS/RDS
+    aws_metric_name: CPUUtilization
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+  
+  
+  - aws_namespace: AWS/RDS
+    aws_metric_name: FreeStorageSpace
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: ReadLatency
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]    
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: WriteLatency
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DatabaseConnections
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+    
+  - aws_namespace: AWS/RDS
+    aws_metric_name: ServerlessDatabaseCapacity
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/Kafka
+    aws_metric_name: KafkaDataLogsDiskUsed
+    aws_dimensions: ["Cluster Name"]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/Kafka
+    aws_metric_name: GlobalTopicCount
+    aws_dimensions: ["Cluster Name"]
+    aws_statistics: [Sum]
+    
+  - aws_namespace: AWS/Kafka
+    aws_metric_name: CpuUser
+    aws_dimensions: ["Cluster Name", "Broker ID"]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/States
+    aws_metric_name: ExecutionsFailed
+    aws_dimensions: [StateMachineArn]
+    aws_statistics: [SampleCount]
+
+  - aws_namespace: AWS/States
+    aws_metric_name: ExecutionsStarted
+    aws_dimensions: [StateMachineArn]
+    aws_statistics: [SampleCount]
+
+  - aws_namespace: AWS/States
+    aws_metric_name: ExecutionsTimedOut
+    aws_dimensions: [StateMachineArn]
+    aws_statistics: [SampleCount]
+
+  - aws_namespace: AWS/States
+    aws_metric_name: LambdaFunctionsStarted
+    aws_dimensions: [LambdaFunctionArn]
+    aws_statistics: [SampleCount]
+
+  - aws_namespace: AWS/States
+    aws_metric_name: LambdaFunctionsTimedOut
+    aws_dimensions: [LambdaFunctionArn]
+    aws_statistics: [SampleCount]
+
+  - aws_namespace: AWS/ElasticMapReduce
+    aws_metric_name: IsIdle
+    aws_dimensions: [JobFlowId]
+    aws_statistics: [Sum]
+  
+  - aws_namespace: AWS/ElasticMapReduce
+    aws_metric_name: AppsFailed
+    aws_dimensions: [JobFlowId]
+    aws_statistics: [Sum]
+
+  - aws_namespace: AWS/S3
+    aws_metric_name: BucketSizeBytes
+    aws_dimensions: [BucketName, StorageType]
+    aws_statistics: [Average, Maximum]
+    range_seconds: 172800
+    period_seconds: 86400
+
