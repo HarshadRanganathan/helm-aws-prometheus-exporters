@@ -1,0 +1,4 @@
+kafkaExporter:
+  kafka:
+    servers:
+     - # MSK bootstrap URLs
