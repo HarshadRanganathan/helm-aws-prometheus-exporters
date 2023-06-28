@@ -35,31 +35,436 @@ config: |-
     aws_metric_name: SurgeQueueLength
     aws_dimensions: [AvailabilityZone, LoadBalancerName]
     aws_statistics: [Maximum, Sum]
-    
+
   - aws_namespace: AWS/ES
-    aws_metric_name: FreeStorageSpace
+    aws_metric_name: 2xx
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: 3xx
     aws_dimensions: [DomainName, ClientId]
     aws_statistics: [Sum]
 
   - aws_namespace: AWS/ES
     aws_metric_name: 4xx
-    aws_dimensions: [DomainName]
-    aws_statistics: [SampleCount]
-  
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum]
+
   - aws_namespace: AWS/ES
     aws_metric_name: 5xx
-    aws_dimensions: [DomainName]
-    aws_statistics: [SampleCount]
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: AlertingIndexExists
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: AlertingIndexStatus.green
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: AlertingIndexStatus.red
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: AlertingIndexStatus.yellow
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: AlertingNodesNotOnSchedule
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: AlertingNodesOnSchedule
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
   
+  - aws_namespace: AWS/ES
+    aws_metric_name: AutomatedSnapshotFailure
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ClusterIndexWritesBlocked
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ClusterStatus.green
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
   - aws_namespace: AWS/ES
     aws_metric_name: ClusterStatus.red
-    aws_dimensions: [DomainName]
-    aws_statistics: [SampleCount]
-  
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
   - aws_namespace: AWS/ES
     aws_metric_name: ClusterStatus.yellow
-    aws_dimensions: [DomainName]
-    aws_statistics: [SampleCount]
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ClusterUsedSpace
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: CoordinatingWriteRejected
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: CPUUtilization
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: DeletedDocuments
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: DiskQueueDepth
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ESReportingFailedRequestSysErrCount
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ESReportingFailedRequestUserErrCount
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ESReportingRequestCount
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ESReportingSuccessCount
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: FreeStorageSpace
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum, Average, Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: IndexingLatency
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average, Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: IndexingRate
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average, Maximum, Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: InvalidHostHeaderRequests
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: JVMGCOldCollectionCount
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: JVMGCOldCollectionTime
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: JVMGCYoungCollectionCount
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: JVMGCYoungCollectionTime
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: JVMMemoryPressure
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: LTRPluginUnhealthy
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: MasterCPUUtilization
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: MasterJVMMemoryPressure
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: MasterReachableFromNode
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: MasterSysMemoryUtilization
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: Nodes
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpenSearchDashboardsConcurrentConnections
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpenSearchDashboardsHealthyNode
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpenSearchDashboardsHealthyNodes
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpenSearchDashboardsHeapTotal
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpenSearchDashboardsHeapUsed
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpenSearchDashboardsHeapUtilization
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpenSearchDashboardsOS1MinuteLoad
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpensearchDashboardsReportingFailedRequestSysErrCount
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpensearchDashboardsReportingFailedRequestUserErrCount
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpensearchDashboardsReportingRequestCount
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpensearchDashboardsReportingSuccessCount
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpenSearchDashboardsRequestTotal
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpenSearchDashboardsResponseTimesMaxInMillis
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: OpenSearchRequests
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: PrimaryWriteRejected
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ReadIOPS
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ReadLatency
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ReadThroughput
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ReplicaWriteRejected
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: SearchableDocuments
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: SearchLatency
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average, Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: SearchRate
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average, Maximum, Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: SegmentCount
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: Shards.active
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum, Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: Shards.activePrimary
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum, Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: Shards.delayedUnassigned
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum, Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: Shards.initializing
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: Shards.relocating
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: Shards.unassigned
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum, Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: SysMemoryUtilization
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ThreadpoolForce_mergeQueue
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ThreadpoolForce_mergeRejected
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Maximum, Sum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ThreadpoolForce_mergeThreads
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ThreadpoolSearchQueue
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ThreadpoolSearchRejected
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ThreadpoolSearchThreads
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: Threadpoolsql-workerQueue
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: Threadpoolsql-workerRejected
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: Threadpoolsql-workerThreads
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ThreadpoolWriteQueue
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ThreadpoolWriteRejected
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ThreadpoolWriteThreads
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: TLSNegotiationError
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: WriteIOPS
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: WriteLatency
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: WriteThroughput
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Minimum, Maximum, Average]
+
+  - aws_namespace: AWS/ES
+    aws_metric_name: ElasticsearchRequests
+    aws_dimensions: [DomainName, ClientId]
+    aws_statistics: [Sum]
   
   - aws_namespace: AWS/ApiGateway
     aws_metric_name: 4XXError
@@ -84,20 +489,374 @@ config: |-
     aws_extended_statistics: [p95]
     
   - aws_namespace: AWS/RDS
+    aws_metric_name: AbortedClients
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AbortedClients
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: ActiveTransactions
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: ActiveTransactions
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AuroraBinlogReplicaLag
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AuroraBinlogReplicaLag
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AuroraDMLRejectedMasterFull
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AuroraDMLRejectedMasterFull
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AuroraReplicaLag
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AuroraReplicaLag
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AuroraReplicaLagMaximum
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AuroraReplicaLagMaximum
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AuroraReplicaLagMinimum
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AuroraReplicaLagMinimum
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AuroraVolumeBytesLeftTotal
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: AuroraVolumeBytesLeftTotal
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: BinLogDiskUsage
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: BinLogDiskUsage
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: BlockedTransactions
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: BlockedTransactions
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: CommitLatency
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: CommitLatency
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: CommitThroughput
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: CommitThroughput
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: ConnectionAttempts
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: ConnectionAttempts
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
     aws_metric_name: CPUUtilization
     aws_dimensions: [DBClusterIdentifier]
     aws_statistics: [Average]
-  
-  
+
   - aws_namespace: AWS/RDS
-    aws_metric_name: FreeStorageSpace
+    aws_metric_name: CPUUtilization
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DatabaseConnections
     aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DatabaseConnections
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DDLLatency
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DDLLatency
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DDLThroughput
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DDLThroughput
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: Deadlocks
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: Deadlocks
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DeleteLatency
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DeleteLatency
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DeleteThroughput
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DeleteThroughput
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DMLLatency
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DMLLatency
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DMLThroughput
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DMLThroughput
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: EBSByteBalance%
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: EBSByteBalance%
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: EBSIOBalance%
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: EBSIOBalance%
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: EngineUptime
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: EngineUptime
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: FreeableMemory
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: FreeableMemory
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: FreeLocalStorage
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: FreeLocalStorage
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: InsertLatency
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: InsertLatency
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: InsertThroughput
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: InsertThroughput
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: LoginFailures
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: LoginFailures
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: Queries
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: Queries
+    aws_dimensions: [DBInstanceIdentifier]
     aws_statistics: [Average]
 
   - aws_namespace: AWS/RDS
     aws_metric_name: ReadLatency
     aws_dimensions: [DBClusterIdentifier]
-    aws_statistics: [Average]    
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: ReadLatency
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: RollbackSegmentHistoryListLength
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: RollbackSegmentHistoryListLength
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: SelectLatency
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: SelectLatency
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: SelectThroughput
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: SelectThroughput
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: UpdateLatency
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: UpdateLatency
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: UpdateThroughput
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: UpdateThroughput
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
 
   - aws_namespace: AWS/RDS
     aws_metric_name: WriteLatency
@@ -105,12 +864,62 @@ config: |-
     aws_statistics: [Average]
 
   - aws_namespace: AWS/RDS
-    aws_metric_name: DatabaseConnections
+    aws_metric_name: WriteLatency
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DBLoad
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DBLoadCPU
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: DBLoadNonCPU
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: FreeStorageSpace
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: ReadIOPS
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: ReadThroughput
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: WriteIOPS
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: WriteThroughput
+    aws_dimensions: [DBInstanceIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: BackupRetentionPeriodStorageUsed
     aws_dimensions: [DBClusterIdentifier]
     aws_statistics: [Average]
-    
+
   - aws_namespace: AWS/RDS
-    aws_metric_name: ServerlessDatabaseCapacity
+    aws_metric_name: SnapshotStorageUsed
+    aws_dimensions: [DBClusterIdentifier]
+    aws_statistics: [Average]
+
+  - aws_namespace: AWS/RDS
+    aws_metric_name: TotalBackupStorageBilled
     aws_dimensions: [DBClusterIdentifier]
     aws_statistics: [Average]
 
@@ -170,4 +979,3 @@ config: |-
     aws_statistics: [Average, Maximum]
     range_seconds: 172800
     period_seconds: 86400
-
